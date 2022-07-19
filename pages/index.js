@@ -17,11 +17,10 @@ function Home() {
   const getAllTheBooks = () => {
     getBooks(user.uid).then(setBooks);
   };
-
   // TODO: make the call to the API to get all the books on component render
   useEffect(() => {
     getAllTheBooks();
-  }, []);
+  }, [user]);
 
   return (
     <div className="text-center my-4">
