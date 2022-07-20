@@ -1,14 +1,16 @@
-// import React, { useEffect, useState } from 'react';
-// import { useRouter } from 'next/router';
-// import { getSingleAuthor } from '../../../api/authorData';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { getSingleAuthor } from '../../../api/authorData';
+import AuthorForm from '../../../components/forms/AuthorForm';
 
-// export default function EditBook() {
-//  const [editAuthor, setEditAuthor] = useState({});
-//  const router = useRouter();
-// TODO: grab the firebasekey
-//  const { firebaseKey } = router.query;
+export default function EditAuthor() {
+  const [editAuthor, setEditAuthor] = useState({});
+  const router = useRouter();
+  const { firebaseKey } = router.query;
 
-// TODO: make a call to the API to get the book data
-// useEffect(() => {
-// getSingleAuthor(firebaseKey).then(setEditItem);
-// }, [firebaseKey]);
+  useEffect(() => {
+    getSingleAuthor(firebaseKey).then(setEditAuthor);
+  }, [firebaseKey]);
+
+  return (<AuthorForm obj={editAuthor} />);
+}

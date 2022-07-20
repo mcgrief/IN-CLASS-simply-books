@@ -16,11 +16,10 @@ export default function ViewAuthor() {
     <div className="mt-5 d-flex flex-wrap">
       <div className="text-white ms-5 details">
         <h5>
-          {authorDetails.authorObject?.first_name} {authorDetails.authorObject?.last_name}
-          {authorDetails.authorObject?.favorite ? ' 🤍' : ''}
+          {authorDetails.first_name} {authorDetails.last_name}
+          {authorDetails.favorite ? ' 🤍' : ''}
         </h5>
-        Author Email: <a href={`mailto:${authorDetails.authorObject?.email}`}>{authorDetails.authorObject?.email}</a>
-        <p>{authorDetails.description || ''}</p>
+        Author Email: <a href={`mailto:${authorDetails.email}`}>{authorDetails.email}</a>
         <hr />
       </div>
     </div>

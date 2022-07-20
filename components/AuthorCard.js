@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { deleteSingleAuthor } from '../api/authorData';
+import Link from 'next/link';
+import { deleteAuthorBooks } from '../api/mergedData';
 
 function AuthorCard({ authorObj, onUpdate }) {
   const deleteThisAuthor = () => {
     if (window.confirm(`Delete ${authorObj.first_name}?`)) {
-      deleteSingleAuthor(authorObj.firebaseKey).then(() => onUpdate());
+      deleteAuthorBooks(authorObj.firebaseKey).then(() => onUpdate());
     }
   };
   return (
@@ -18,6 +19,12 @@ function AuthorCard({ authorObj, onUpdate }) {
         <Card.Text>
           {authorObj.email}
         </Card.Text>
+        <Link href={`/author/${authorObj.firebaseKey}`} passHref>
+          <Button variant="primary" className="m-2">VIEW</Button>
+        </Link>
+        <Link href={`/author/edit/${authorObj.firebaseKey}`} passHref>
+          <Button variant="info">EDIT</Button>
+        </Link>
         <Button variant="danger" onClick={deleteThisAuthor}>Delete</Button>
       </Card.Body>
     </Card>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { PropTypes } from 'prop-types';
 
 export default function UserData({
